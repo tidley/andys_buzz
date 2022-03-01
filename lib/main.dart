@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -5,9 +7,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:andys_buzz/routes/routes.dart';
 
 // Providers
-final helloWorldProvider = Provider((_) => 'Hello world');
-
-final balanceProvider = Provider((_)=>[0]);
+final helloWorldProvider = Provider((ref) => 'Hello worlds');
+final balanceProvider = StateProvider((ref) => 13);
 
 void main() {
   runApp(ProviderScope(child: MyApp()));
@@ -16,16 +17,15 @@ void main() {
 class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final String value = ref.watch(helloWorldProvider);
-
+    
     return MaterialApp(
-      
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Example')),
-        body: Center(
-          child: Text(value),
-        ),
-      ),
+      theme: ThemeData.dark(),
+      title: "Andy's Buzz",
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const AdminHome(),
+        // '/second': (context) => const SecondScreen(),
+      },
       debugShowCheckedModeBanner: false,
     );    
   }
