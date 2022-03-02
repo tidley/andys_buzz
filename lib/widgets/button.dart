@@ -15,6 +15,7 @@ class ButtonTest extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     StateController<int> balance = ref.watch(balanceProvider.notifier);
     return FloatingActionButton(
+      heroTag: null,
       onPressed: () => increment(balance),
       tooltip: 'Increment',
       child: const Icon(Icons.add),
@@ -33,6 +34,7 @@ class ButtonDown extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     StateController<int> balance = ref.watch(balanceProvider.notifier);
     return FloatingActionButton(
+      heroTag: null,
       onPressed: () => decrement(balance),
       tooltip: 'Increment',
       child: const Icon(Icons.remove),

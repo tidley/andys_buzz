@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 //
 import 'package:andys_buzz/main.dart';
 
-// TODO nicer layout https://www.geeksforgeeks.org/difference-between-rows-and-columns-vs-container-in-flutter/
+// TODO 1 nicer layout https://www.geeksforgeeks.org/difference-between-rows-and-columns-vs-container-in-flutter/
 
 TableRow headerRow(balance) {
   return TableRow(
@@ -38,7 +38,8 @@ class OverviewTable extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    StateController<int> balance = ref.watch(balanceProvider.notifier);
+    // StateController<int> balance = ref.watch(balanceProvider.notifier);
+    final int balance = ref.watch(balanceProvider);
     return Table(
       border: TableBorder.all(),
       columnWidths: const <int, TableColumnWidth>{
@@ -55,7 +56,7 @@ class OverviewTable extends ConsumerWidget {
             Container(
               // height: 32,
               color: Colors.green,
-              child: Text(balance.state.toString()),
+              child: Text(balance.toString()),
             ),
             TableCell(
               verticalAlignment: TableCellVerticalAlignment.top,
