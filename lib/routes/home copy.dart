@@ -13,14 +13,12 @@ class AdminHome extends ConsumerWidget {
     final String value = ref.watch(helloWorldProvider);
     final int balance = ref.watch(balanceProvider);
 
-
     return Scaffold(
       appBar: AppBar(title: const Text('Admin Home')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            OverviewTable(),
             Text(value + balance.toString()),
             ButtonDown(),
           ],
