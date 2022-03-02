@@ -6,6 +6,33 @@ import 'package:andys_buzz/main.dart';
 
 // TODO nicer layout https://www.geeksforgeeks.org/difference-between-rows-and-columns-vs-container-in-flutter/
 
+TableRow headerRow(balance) {
+  return TableRow(
+    children: <Widget>[
+      Container(
+        alignment: Alignment.center,
+        height: 32,
+        child: Text(
+          balance.state.toString(),
+          textAlign: TextAlign.center,
+        ),
+      ),
+      const TableCell(
+        child: Text(
+          "Total",
+          textAlign: TextAlign.center,
+        ),
+      ),
+      TableCell(
+        child: Text(
+          "Site ${balance.state.toString()}",
+          textAlign: TextAlign.center,
+        ),
+      ),
+    ],
+  );
+}
+
 class OverviewTable extends ConsumerWidget {
   const OverviewTable({Key? key}) : super(key: key);
 
@@ -16,47 +43,13 @@ class OverviewTable extends ConsumerWidget {
       border: TableBorder.all(),
       columnWidths: const <int, TableColumnWidth>{
         0: IntrinsicColumnWidth(),
-        1: FlexColumnWidth(),
-        2: FixedColumnWidth(64),
+        // 1: FlexColumnWidth(),
+        // 2: FlexColumnWidth(), //FixedColumnWidth(64),
       },
       defaultVerticalAlignment: TableCellVerticalAlignment.middle,
       children: <TableRow>[
-        TableRow(
-          children: <Widget>[
-            Container(
-              alignment: Alignment.center,
-              height: 32,
-              child: const Text(
-                "-",
-                textAlign: TextAlign.center,
-              ),
-            ),
-            // const TableCell(
-            //   child: Text(
-            //     "-",
-            //     textAlign: TextAlign.center,
-            //   ),
+        headerRow(balance),
 
-            //   // child: SizedBox(
-            //   //   height: 32,
-            //   //   child: Text("-"),
-            //   // ),
-            // ),
-            const TableCell(
-              // verticalAlignment: TableCellVerticalAlignment.middle,
-
-              child: Text(
-                "Total",
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Container(
-              // height: 32,
-              color: Colors.green,
-              child: Text(balance.state.toString()),
-            ),
-          ],
-        ),
         TableRow(
           children: <Widget>[
             Container(
