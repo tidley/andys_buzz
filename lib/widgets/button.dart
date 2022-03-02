@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:andys_buzz/main.dart';
 
 int increment(balance) {
-  return balance.state++;
+  return balance++;
 }
 
 class ButtonTest extends ConsumerWidget {
@@ -13,7 +13,9 @@ class ButtonTest extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    StateController<int> balance = ref.watch(balanceProvider.notifier);
+    // StateController<int> balance = ref.watch(balanceProvider.notifier);
+    final int balance = ref.watch(balanceProvider);
+
     return FloatingActionButton(
       heroTag: null,
       onPressed: () => increment(balance),
@@ -24,7 +26,8 @@ class ButtonTest extends ConsumerWidget {
 }
 
 int decrement(balance) {
-  return balance.state = balance.state - 2;
+  print(balance);
+  return balance = balance - 2;
 }
 
 class ButtonDown extends ConsumerWidget {
@@ -32,7 +35,9 @@ class ButtonDown extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    StateController<int> balance = ref.watch(balanceProvider.notifier);
+    // StateController<int> balance = ref.watch(balanceProvider.notifier);
+    final int balance = ref.watch(balanceProvider);
+
     return FloatingActionButton(
       heroTag: null,
       onPressed: () => decrement(balance),

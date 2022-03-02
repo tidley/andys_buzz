@@ -13,7 +13,7 @@ TableRow headerRow(balance) {
         alignment: Alignment.center,
         height: 32,
         child: Text(
-          balance.state.toString(),
+          balance.toString(),
           textAlign: TextAlign.center,
         ),
       ),
@@ -25,7 +25,7 @@ TableRow headerRow(balance) {
       ),
       TableCell(
         child: Text(
-          "Site ${balance.state.toString()}",
+          "Site ${balance.toString()}",
           textAlign: TextAlign.center,
         ),
       ),
