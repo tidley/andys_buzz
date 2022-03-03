@@ -71,7 +71,9 @@ class ButtonBoltPower extends ConsumerWidget {
       // invertBool(ref.watch(powerButtonGreen.state)), // decrement2(),
       tooltip: 'Increment',
       child: const Icon(Icons.power_settings_new_rounded),
-      backgroundColor: boltsProvider[row].isLive ? Colors.green : Colors.pink,
+      backgroundColor: boltsProvider[row].isLive
+          ? Color.fromARGB(255, 85, 255, 0)
+          : Color.fromARGB(255, 0, 38, 255),
     );
   }
 }
