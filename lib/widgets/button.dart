@@ -4,8 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 //
 import 'package:andys_buzz/main.dart';
 
-int increment(balance) {
-  return balance++;
+void increment(balance) {
+  balance.state++;
 }
 
 class ButtonTest extends ConsumerWidget {
@@ -13,21 +13,17 @@ class ButtonTest extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // StateController<int> balance = ref.watch(balanceProvider.notifier);
-    final int balance = ref.watch(balanceProvider);
-
     return FloatingActionButton(
       heroTag: null,
-      onPressed: () => increment(balance),
+      onPressed: () => increment(ref.watch(balanceProvider.state)),
       tooltip: 'Increment',
       child: const Icon(Icons.add),
     );
   }
 }
 
-int decrement(balance) {
-  print(balance);
-  return balance = balance - 2;
+void decrement(balance) {
+  balance.state = balance.state - 2;
 }
 
 class ButtonDown extends ConsumerWidget {
@@ -35,12 +31,10 @@ class ButtonDown extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // StateController<int> balance = ref.watch(balanceProvider.notifier);
-    final int balance = ref.watch(balanceProvider);
-
     return FloatingActionButton(
       heroTag: null,
-      onPressed: () => decrement(balance),
+      onPressed: () =>
+          decrement(ref.watch(balanceProvider.state)), // decrement2(),
       tooltip: 'Increment',
       child: const Icon(Icons.remove),
     );

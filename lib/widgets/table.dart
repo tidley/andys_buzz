@@ -38,7 +38,6 @@ class OverviewTable extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // StateController<int> balance = ref.watch(balanceProvider.notifier);
     final int balance = ref.watch(balanceProvider);
     return Table(
       border: TableBorder.all(),
@@ -50,13 +49,16 @@ class OverviewTable extends ConsumerWidget {
       defaultVerticalAlignment: TableCellVerticalAlignment.middle,
       children: <TableRow>[
         headerRow(balance),
-
         TableRow(
           children: <Widget>[
             Container(
-              // height: 32,
               color: Colors.green,
-              child: Text(balance.toString()),
+              child: Consumer(
+                builder: (context, _ref, _) {
+                  final int _balance = _ref.watch(balanceProvider.state).state;
+                  return Text(_balance.toString());
+                },
+              ),
             ),
             TableCell(
               verticalAlignment: TableCellVerticalAlignment.top,

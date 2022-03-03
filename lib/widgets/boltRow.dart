@@ -32,10 +32,17 @@ class BoltRow extends ConsumerWidget {
               children: [
                 Text(row.toString()),
                 Text(fieldsToDart(bolts.state[0]).name),
-                const Image(
-                  image: NetworkImage(
-                      'https://images.prismic.io/ohme/ff49fa70-9ec4-4ce3-8495-9986cbc9ac8a_type+2+-+type+2+home+charging.png?auto=compress,format'),
-                  height: 50,
+                Container(
+                  padding: EdgeInsets.all(2),
+                  // height: MediaQuery.of(context).size.height / 12,
+                  child: Image(
+                    fit: BoxFit.contain,
+                    image: ResizeImage(
+                      const NetworkImage(
+                          'https://images.prismic.io/ohme/ff49fa70-9ec4-4ce3-8495-9986cbc9ac8a_type+2+-+type+2+home+charging.png?auto=compress,format'),
+                      height: MediaQuery.of(context).size.height ~/ 10,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -49,7 +56,7 @@ class BoltRow extends ConsumerWidget {
             child: Column(
               children: [
                 Text("Location: ${fieldsToDart(bolts.state[0]).location}"),
-                Text("Other Data: "),
+                const Text("Other Data: "),
               ],
             ),
           ),
