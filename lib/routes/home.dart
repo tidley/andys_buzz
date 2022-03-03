@@ -13,20 +13,19 @@ class AdminHome extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    StateController<String> currentUser =
-        ref.watch(currentUserProvider.notifier);
     final String value = ref.watch(helloWorldProvider);
     final int balance = ref.watch(balanceProvider);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Welcome Home ${currentUser.state}'),
+        title: Text(
+            'Welcome Home ${ref.watch(currentUserProvider.notifier).state}'),
       ),
       body: Center(
         child: Column(
           children: [
             Container(
-              height: 400.0,
+              height: MediaQuery.of(context).size.height / 3,
               child: ListView(
                 padding: const EdgeInsets.all(8),
                 children: <Widget>[
