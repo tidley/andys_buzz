@@ -14,10 +14,10 @@ class Bolt {
 
 @immutable
 class BoltTest {
-  const BoltTest({required this.id, required this.isLive});
+  BoltTest({required this.id, required this.isLive});
 
   final String id;
-  final bool isLive;
+  late bool isLive;
 
   BoltTest copyWith({String? id, bool? isLive}) {
     return BoltTest(id: id ?? this.id, isLive: isLive ?? this.isLive);
@@ -27,10 +27,10 @@ class BoltTest {
 class BoltTestNotifier extends StateNotifier<List<BoltTest>> {
   BoltTestNotifier()
       : super([
-          const BoltTest(id: "0", isLive: false),
-          const BoltTest(id: "1", isLive: true),
-          const BoltTest(id: "2", isLive: true),
-          const BoltTest(id: "3", isLive: true)
+          BoltTest(id: "0", isLive: false),
+          BoltTest(id: "1", isLive: true),
+          BoltTest(id: "2", isLive: true),
+          BoltTest(id: "3", isLive: true)
         ]);
 
   void toggle(String boltId) {

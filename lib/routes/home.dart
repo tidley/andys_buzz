@@ -16,9 +16,18 @@ class AdminHome extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final String value = ref.watch(helloWorldProvider);
     final int balance = ref.watch(balanceProvider);
-    final List<bool> buttonColProv = ref.watch(powerButtonGreen);
+    final List<BoltTest> buttonColProv = ref.watch(powerButtonGreen);
     List<BoltTest> boltsProvider = ref.watch(powerButtonGreenNotifier);
 
+    List<BoltRow> _boltRows() {
+      List<BoltRow> _rows = [];
+      for (final bolt in buttonColProv) {
+        _rows.add(BoltRow(
+          bolt: bolt,
+        ));
+      }
+      return _rows;
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -35,14 +44,15 @@ class AdminHome extends ConsumerWidget {
                 children: <Widget>[
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const BoltRow(row: 0),
-                      const BoltRow(row: 1),
-                      Column(
-                        children:
-                            exampleList.map((e) => BoltRow(row: e)).toList(),
-                      ),
-                    ],
+                    children: _boltRows(),
+                    //  [
+                    // const BoltRow(row: 0),
+                    // const BoltRow(row: 1),
+                    // Column(
+                    //   children:
+                    //       exampleList.map((e) => BoltRow(row: e)).toList(),
+                    // ),
+                    // ],
                   ),
                 ],
               ),

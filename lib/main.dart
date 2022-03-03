@@ -12,7 +12,12 @@ final boltProvider = StateProvider(
     {'name': "MyFirstBolt", "location": "home"}
   ],
 );
-final powerButtonGreen = StateProvider((ref) => [true, false, true]);
+final powerButtonGreen = StateProvider((ref) => [
+      BoltTest(id: "0", isLive: false),
+      BoltTest(id: "1", isLive: true),
+      BoltTest(id: "2", isLive: true),
+      BoltTest(id: "3", isLive: true)
+    ]);
 final powerButtonGreenNotifier =
     StateNotifierProvider<BoltTestNotifier, List<BoltTest>>((ref) {
   return BoltTestNotifier();

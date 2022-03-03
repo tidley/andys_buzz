@@ -50,28 +50,20 @@ void invertBool(_boolIn) {
 }
 
 class ButtonBoltPower extends ConsumerWidget {
-  final int row;
-  const ButtonBoltPower({Key? key, required this.row}) : super(key: key);
+  ButtonBoltPower({Key? key, required this.bolt}) : super(key: key);
+  late BoltTest bolt;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final List<bool> buttonColProv = ref.watch(powerButtonGreen);
-    List<BoltTest> boltsProvider = ref.watch(powerButtonGreenNotifier);
-    print("boltsProvider[0].isLive: ${boltsProvider[row].isLive}");
-
-    print("buttonColProv[0]: ${buttonColProv[0]}");
-    List<bool> _off = ref.watch(powerButtonGreen.state).state;
-    bool _boltIs = _off[0];
-    print("_off $_off");
+    print("bolt.isLive: ${bolt.isLive}");
     return FloatingActionButton.small(
       heroTag: null,
-      onPressed: () => ref
-          .read(powerButtonGreenNotifier.notifier)
-          .toggle(boltsProvider[row].id),
+      onPressed: () => bolt.isLive = !bolt.isLive,
+      //bolt = BoltTest(id: bolt.id, isLive: !bolt.isLive),
       // invertBool(ref.watch(powerButtonGreen.state)), // decrement2(),
       tooltip: 'Increment',
       child: const Icon(Icons.power_settings_new_rounded),
-      backgroundColor: boltsProvider[row].isLive ? Colors.green : Colors.pink,
+      backgroundColor: bolt.isLive ? Colors.green : Colors.pink,
     );
   }
 }

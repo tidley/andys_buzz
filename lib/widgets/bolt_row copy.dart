@@ -12,14 +12,14 @@ Bolt fieldsToDart(bolts) {
 }
 
 class BoltRow extends ConsumerWidget {
-  final BoltTest bolt;
-  const BoltRow({Key? key, required this.bolt}) : super(key: key);
+  final int row;
+  const BoltRow({Key? key, required this.row}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // row with three cells.
     // Cell 1 Title of Bolt || Cell 2 Bolt info || Cell 3 on/off
-    // StateController<dynamic> bolts = ref.watch(boltProvider.notifier);
+    StateController<dynamic> bolts = ref.watch(boltProvider.notifier);
     return Row(
       // mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -30,8 +30,8 @@ class BoltRow extends ConsumerWidget {
             padding: const EdgeInsets.all(15),
             child: Row(
               children: [
-                Text(bolt.id.toString()),
-                // Text(fieldsToDart(bolts.state[0]).name),
+                Text(row.toString()),
+                Text(fieldsToDart(bolts.state[0]).name),
                 Container(
                   padding: EdgeInsets.all(2),
                   // height: MediaQuery.of(context).size.height / 12,
@@ -55,13 +55,13 @@ class BoltRow extends ConsumerWidget {
             padding: const EdgeInsets.all(15),
             child: Column(
               children: [
-                Text("Location: ${bolt.isLive.toString()}"),
+                Text("Location: ${fieldsToDart(bolts.state[0]).location}"),
                 const Text("Other Data: "),
               ],
             ),
           ),
         ),
-        ButtonBoltPower(bolt: bolt),
+        ButtonBoltPower(row: row),
       ],
     );
   }
