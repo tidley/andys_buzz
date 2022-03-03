@@ -9,8 +9,8 @@ void increment(balance) {
   balance.state++;
 }
 
-class ButtonTest extends ConsumerWidget {
-  const ButtonTest({Key? key}) : super(key: key);
+class ButtonUp extends ConsumerWidget {
+  const ButtonUp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -23,45 +23,56 @@ class BoltRow extends ConsumerWidget {
     return Row(
       // mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Card(
-          margin: const EdgeInsets.all(5),
-          elevation: 5,
-          child: Container(
-            padding: const EdgeInsets.all(15),
-            child: Row(
-              children: [
-                Text(row.toString()),
-                Text(fieldsToDart(bolts.state[0]).name),
-                Container(
-                  padding: EdgeInsets.all(2),
-                  // height: MediaQuery.of(context).size.height / 12,
-                  child: Image(
-                    fit: BoxFit.contain,
-                    image: ResizeImage(
-                      const NetworkImage(
-                          'https://images.prismic.io/ohme/ff49fa70-9ec4-4ce3-8495-9986cbc9ac8a_type+2+-+type+2+home+charging.png?auto=compress,format'),
-                      height: MediaQuery.of(context).size.height ~/ 10,
+        Container(
+          width: (MediaQuery.of(context).size.width / 2.5) - 20,
+          child: Card(
+            margin: const EdgeInsets.all(5),
+            elevation: 5,
+            child: Container(
+              padding: const EdgeInsets.all(15),
+              child: Row(
+                children: [
+                  Text(row.toString()),
+                  Text(fieldsToDart(bolts.state[0]).name),
+                  Container(
+                    padding: EdgeInsets.all(2),
+                    // height: MediaQuery.of(context).size.height / 12,
+                    child: Image(
+                      fit: BoxFit.contain,
+                      image: ResizeImage(
+                        const NetworkImage(
+                            'https://images.prismic.io/ohme/ff49fa70-9ec4-4ce3-8495-9986cbc9ac8a_type+2+-+type+2+home+charging.png?auto=compress,format'),
+                        height: MediaQuery.of(context).size.height ~/ 8,
+                      ),
                     ),
                   ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Container(
+          width: (MediaQuery.of(context).size.width / 1.75) - 20,
+          child: Row(
+            children: [
+              Card(
+                margin: const EdgeInsets.all(5),
+                elevation: 5,
+                child: Container(
+                  padding: const EdgeInsets.all(15),
+                  child: Column(
+                    children: [
+                      Text(
+                          "Location: ${fieldsToDart(bolts.state[0]).location}"),
+                      const Text("Other Data: "),
+                    ],
+                  ),
                 ),
-              ],
-            ),
+              ),
+              ButtonBoltPower(row: row),
+            ],
           ),
         ),
-        Card(
-          margin: const EdgeInsets.all(5),
-          elevation: 5,
-          child: Container(
-            padding: const EdgeInsets.all(15),
-            child: Column(
-              children: [
-                Text("Location: ${fieldsToDart(bolts.state[0]).location}"),
-                const Text("Other Data: "),
-              ],
-            ),
-          ),
-        ),
-        ButtonBoltPower(row: row),
       ],
     );
   }

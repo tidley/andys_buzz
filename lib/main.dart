@@ -36,7 +36,6 @@ class MyApp extends ConsumerWidget {
       routes: {
         '/': (context) => const LoginScreen(),
         '/adminHome': (context) => const AdminHome(),
-        // '/second': (context) => const SecondScreen(),
       },
       debugShowCheckedModeBanner: false,
     );

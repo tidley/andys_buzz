@@ -5,11 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class Bolt {
-  String name = "";
-  String location = "";
+  String name;
+  String location;
+  bool isPowered;
   DateTime registered = DateTime.now();
 
-  Bolt({required this.name, required this.location});
+  Bolt({required this.name, required this.location, this.isPowered = false});
 }
 
 @immutable

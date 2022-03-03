@@ -19,43 +19,54 @@ class AdminHome extends ConsumerWidget {
     final List<bool> buttonColProv = ref.watch(powerButtonGreen);
     List<BoltTest> boltsProvider = ref.watch(powerButtonGreenNotifier);
 
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
             'Welcome Home ${ref.watch(currentUserProvider.notifier).state}'),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height / 3,
-              child: ListView(
-                padding: const EdgeInsets.all(8),
-                children: <Widget>[
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const BoltRow(row: 0),
-                      const BoltRow(row: 1),
-                      Column(
-                        children:
-                            exampleList.map((e) => BoltRow(row: e)).toList(),
-                      ),
-                    ],
-                  ),
-                ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height / 3,
+                child: ListView(
+                  padding: const EdgeInsets.all(8),
+                  children: <Widget>[
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const BoltRow(row: 0),
+                        const BoltRow(row: 1),
+                        Column(
+                          children:
+                              exampleList.map((e) => BoltRow(row: e)).toList(),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const OverviewTable(),
-            Text(value +
-                balance.toString() +
-                boltsProvider[0].isLive.toString()),
-            const ButtonDown(),
-          ],
+              Container(
+                height: MediaQuery.of(context).size.height / 4,
+                child: const OverviewTable(),
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height / 10,
+                alignment: Alignment.center,
+                child: Text(value +
+                    balance.toString() +
+                    boltsProvider[0].isLive.toString()),
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height / 8,
+                child: const ButtonDown(),
+              ),
+            ],
+          ),
         ),
       ),
-      floatingActionButton: const ButtonTest(),
+      floatingActionButton: const ButtonUp(),
     );
   }
 }
