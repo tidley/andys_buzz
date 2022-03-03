@@ -45,7 +45,7 @@ class AdminHome extends ConsumerWidget {
             ),
             const OverviewTable(),
             Text(value + balance.toString()),
-            const Counter(),
+            const ButtonDown(),
           ],
         ),
       ),
