@@ -1,3 +1,5 @@
+import 'package:andys_buzz/classes/bolt.dart';
+import 'package:andys_buzz/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -8,9 +10,14 @@ import 'package:andys_buzz/routes/routes.dart';
 final currentUserProvider = StateProvider((ref) => "guest");
 final boltProvider = StateProvider(
   (ref) => [
-    {'name': "MyFirstBolt", "location": "home"}
+    Bolt(name: "a", location: "1"),
+    Bolt(name: "b", location: "2", isPowered: true),
+    Bolt(name: "c", location: "3"),
+    Bolt(name: "d", location: "4")
   ],
 );
+final boltClassProvider =
+    ChangeNotifierProvider((ref) => Bolt(name: "a", location: "1"));
 final helloWorldProvider = Provider((ref) => 'Hello worlds');
 final balanceProvider = StateProvider((ref) => 13);
 
@@ -30,7 +37,6 @@ class MyApp extends ConsumerWidget {
       routes: {
         '/': (context) => const LoginScreen(),
         '/adminHome': (context) => const AdminHome(),
-        // '/second': (context) => const SecondScreen(),
       },
       debugShowCheckedModeBanner: false,
     );

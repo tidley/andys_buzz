@@ -53,12 +53,13 @@ class OverviewTable extends ConsumerWidget {
           children: <Widget>[
             Container(
               color: Colors.green,
-              child: Consumer(
-                builder: (context, _ref, _) {
-                  final int _balance = _ref.watch(balanceProvider.state).state;
-                  return Text(_balance.toString());
-                },
-              ),
+              // child: Consumer(
+              //   builder: (context, ref, _) {
+              //     final int _balance = ref.watch(balanceProvider.state).state;
+              //     return Text(_balance.toString());
+              //   },
+              // ),
+              child: Text(balance.toString()),
             ),
             TableCell(
               verticalAlignment: TableCellVerticalAlignment.top,
