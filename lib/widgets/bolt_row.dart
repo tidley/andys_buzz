@@ -61,7 +61,7 @@ class BoltRow extends ConsumerWidget {
             ),
           ),
         ),
-        const ButtonDown(),
+        ButtonBoltPower(row: row),
       ],
     );
   }

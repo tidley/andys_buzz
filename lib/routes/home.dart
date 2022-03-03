@@ -1,4 +1,5 @@
-import 'package:andys_buzz/widgets/boltRow.dart';
+import 'package:andys_buzz/classes/classes.dart';
+import 'package:andys_buzz/widgets/bolt_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -6,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:andys_buzz/main.dart';
 import 'package:andys_buzz/widgets/widgets.dart';
 
-List<int> exampleList = [1, 2, 3, 4];
+List<int> exampleList = [0, 1, 2, 3];
 
 class AdminHome extends ConsumerWidget {
   const AdminHome({Key? key}) : super(key: key);
@@ -15,6 +16,9 @@ class AdminHome extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final String value = ref.watch(helloWorldProvider);
     final int balance = ref.watch(balanceProvider);
+    final List<bool> buttonColProv = ref.watch(powerButtonGreen);
+    List<BoltTest> boltsProvider = ref.watch(powerButtonGreenNotifier);
+
 
     return Scaffold(
       appBar: AppBar(
@@ -32,8 +36,8 @@ class AdminHome extends ConsumerWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      const BoltRow(row: 0),
                       const BoltRow(row: 1),
-                      const BoltRow(row: 2),
                       Column(
                         children:
                             exampleList.map((e) => BoltRow(row: e)).toList(),
@@ -44,7 +48,9 @@ class AdminHome extends ConsumerWidget {
               ),
             ),
             const OverviewTable(),
-            Text(value + balance.toString()),
+            Text(value +
+                balance.toString() +
+                boltsProvider[0].isLive.toString()),
             const ButtonDown(),
           ],
         ),

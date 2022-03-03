@@ -1,2 +1,2 @@
-export 'button.dart';
+export 'buttons.dart';
 export 'table.dart';

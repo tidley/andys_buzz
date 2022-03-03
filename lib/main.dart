@@ -1,3 +1,4 @@
+import 'package:andys_buzz/classes/bolt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -11,6 +12,11 @@ final boltProvider = StateProvider(
     {'name': "MyFirstBolt", "location": "home"}
   ],
 );
+final powerButtonGreen = StateProvider((ref) => [true, false, true]);
+final powerButtonGreenNotifier =
+    StateNotifierProvider<BoltTestNotifier, List<BoltTest>>((ref) {
+  return BoltTestNotifier();
+});
 final helloWorldProvider = Provider((ref) => 'Hello worlds');
 final balanceProvider = StateProvider((ref) => 13);
 
