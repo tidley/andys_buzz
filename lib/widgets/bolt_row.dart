@@ -25,7 +25,7 @@ class BoltRow extends ConsumerWidget {
       children: [
         Card(
           margin: const EdgeInsets.all(5),
-          elevation: 8,
+          elevation: 5,
           child: Container(
             padding: const EdgeInsets.all(15),
             child: Row(
@@ -50,7 +50,7 @@ class BoltRow extends ConsumerWidget {
         ),
         Card(
           margin: const EdgeInsets.all(5),
-          elevation: 8,
+          elevation: 5,
           child: Container(
             padding: const EdgeInsets.all(15),
             child: Column(

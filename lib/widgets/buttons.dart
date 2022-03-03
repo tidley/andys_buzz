@@ -74,6 +74,7 @@ class ButtonBoltPower extends ConsumerWidget {
       backgroundColor: boltsProvider[row].isLive
           ? Color.fromARGB(255, 85, 255, 0)
           : Color.fromARGB(255, 0, 38, 255),
+      elevation: boltsProvider[row].isLive ? 10 : 0,
     );
   }
 }
