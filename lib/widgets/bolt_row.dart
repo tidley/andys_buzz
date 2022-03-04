@@ -23,7 +23,7 @@ class BoltRows extends ConsumerWidget {
             // mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                width: (MediaQuery.of(context).size.width / 2.5) - 20,
+                width: (MediaQuery.of(context).size.width / 2.2) - 20,
                 child: Card(
                   margin: const EdgeInsets.all(5),
                   elevation: 5,
@@ -41,7 +41,7 @@ class BoltRows extends ConsumerWidget {
                             image: ResizeImage(
                               const NetworkImage(
                                   'https://images.prismic.io/ohme/ff49fa70-9ec4-4ce3-8495-9986cbc9ac8a_type+2+-+type+2+home+charging.png?auto=compress,format'),
-                              height: MediaQuery.of(context).size.height ~/ 8,
+                              height: MediaQuery.of(context).size.height ~/ 10,
                             ),
                           ),
                         ),

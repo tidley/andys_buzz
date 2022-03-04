@@ -55,8 +55,11 @@ class ButtonBoltPower extends ConsumerWidget {
       tooltip: 'On/Off',
       child: const Icon(Icons.power_settings_new_rounded),
       backgroundColor: bolt.isLive
-          ? Color.fromARGB(255, 85, 255, 0)
-          : Color.fromARGB(255, 0, 38, 255),
+          ? Color.fromARGB(255, 121, 252, 55)
+          : Color.fromARGB(255, 47, 79, 255),
+      foregroundColor: bolt.isLive
+          ? Color.fromARGB(255, 248, 158, 23)
+          : Color.fromARGB(255, 107, 107, 107),
       elevation: bolt.isLive ? 10 : 0,
     );
   }

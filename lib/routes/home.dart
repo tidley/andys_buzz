@@ -32,7 +32,12 @@ class AdminHome extends ConsumerWidget {
                 height: MediaQuery.of(context).size.height / 3,
                 child: ListView(
                   padding: const EdgeInsets.all(8),
-                  children: const [BoltRows()],
+                  children: const [
+                    BoltRows(),
+                    BoltRows(),
+
+                    // TODO Add Bolt
+                  ],
                 ),
               ),
               Container(
