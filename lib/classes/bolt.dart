@@ -1,38 +1,64 @@
-import 'dart:isolate';
-
-import 'package:andys_buzz/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class Bolt {
-  String name;
-  String location;
-  bool isPowered;
-  DateTime registered = DateTime.now();
-
-  Bolt({required this.name, required this.location, this.isPowered = false});
-}
-
 @immutable
-class BoltTest {
-  const BoltTest({required this.id, required this.isLive});
+class Bolt {
+  const Bolt(
+      {required this.id,
+      required this.name,
+      required this.location,
+      required this.isLive,
+      required this.registered});
 
   final String id;
+  final String name;
+  final String location;
   final bool isLive;
+  final DateTime registered;
 
-  BoltTest copyWith({String? id, bool? isLive}) {
-    return BoltTest(id: id ?? this.id, isLive: isLive ?? this.isLive);
+  Bolt copyWith(
+      {String? id,
+      String? name,
+      String? location,
+      bool? isLive,
+      DateTime? registered}) {
+    return Bolt(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      location: location ?? this.location,
+      isLive: isLive ?? this.isLive,
+      registered: registered ?? this.registered,
+    );
   }
 }
 
-class BoltTestNotifier extends StateNotifier<List<BoltTest>> {
-  BoltTestNotifier()
+class BoltNotifier extends StateNotifier<List<Bolt>> {
+  BoltNotifier()
       : super([
-          const BoltTest(id: "0", isLive: false),
-          const BoltTest(id: "1", isLive: true),
-          const BoltTest(id: "2", isLive: true),
-          const BoltTest(id: "3", isLive: true)
+          Bolt(
+              id: "0",
+              name: "First",
+              location: "heaven",
+              isLive: false,
+              registered: DateTime.now()),
+          Bolt(
+              id: "1",
+              name: "s",
+              location: "floor",
+              isLive: true,
+              registered: DateTime.now()),         
         ]);
+
+  void addBolt(Bolt bolt) {
+    state = [...state, bolt];
+  }
+
+  void removeBolt(String boltId) {
+    state = [
+      for (final bolt in state)
+        if (bolt.id != boltId) bolt,
+    ];
+  }
 
   void toggle(String boltId) {
     state = [

@@ -7,15 +7,8 @@ import 'package:andys_buzz/routes/routes.dart';
 
 // Providers
 final currentUserProvider = StateProvider((ref) => "guest");
-final boltProvider = StateProvider(
-  (ref) => [
-    {'name': "MyFirstBolt", "location": "home"}
-  ],
-);
-final powerButtonGreen = StateProvider((ref) => [true, false, true]);
-final powerButtonGreenNotifier =
-    StateNotifierProvider<BoltTestNotifier, List<BoltTest>>((ref) {
-  return BoltTestNotifier();
+final boltsProvider = StateNotifierProvider<BoltNotifier, List<Bolt>>((ref) {
+  return BoltNotifier();
 });
 final helloWorldProvider = Provider((ref) => 'Hello worlds');
 final balanceProvider = StateProvider((ref) => 13);

@@ -16,8 +16,8 @@ class AdminHome extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final String value = ref.watch(helloWorldProvider);
     final int balance = ref.watch(balanceProvider);
-    final List<bool> buttonColProv = ref.watch(powerButtonGreen);
-    List<BoltTest> boltsProvider = ref.watch(powerButtonGreenNotifier);
+
+    List<Bolt> bolts = ref.watch(boltsProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -32,19 +32,7 @@ class AdminHome extends ConsumerWidget {
                 height: MediaQuery.of(context).size.height / 3,
                 child: ListView(
                   padding: const EdgeInsets.all(8),
-                  children: <Widget>[
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const BoltRow(row: 0),
-                        const BoltRow(row: 1),
-                        Column(
-                          children:
-                              exampleList.map((e) => BoltRow(row: e)).toList(),
-                        ),
-                      ],
-                    ),
-                  ],
+                  children: const [BoltRows()],
                 ),
               ),
               Container(
@@ -54,9 +42,8 @@ class AdminHome extends ConsumerWidget {
               Container(
                 height: MediaQuery.of(context).size.height / 10,
                 alignment: Alignment.center,
-                child: Text(value +
-                    balance.toString() +
-                    boltsProvider[0].isLive.toString()),
+                child: Text(
+                    value + balance.toString() + bolts[0].isLive.toString()),
               ),
               Container(
                 height: MediaQuery.of(context).size.height / 8,
