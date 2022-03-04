@@ -13,7 +13,10 @@ class BoltRows extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     List<Bolt> bolts = ref.watch(boltsProvider);
-
+    void toggle1(id) {
+      //TODO see if can be used as callback
+      ref.read(boltsProvider.notifier).toggle(id);
+    }
     // row with three cells.
     // Cell 1 Title of Bolt || Cell 2 Bolt info || Cell 3 on/off
     return Column(
