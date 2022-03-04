@@ -1,3 +1,4 @@
+import 'package:andys_buzz/classes/classes.dart';
 import 'package:andys_buzz/widgets/bolt_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,6 +17,8 @@ class AdminHome extends ConsumerWidget {
     final String value = ref.watch(helloWorldProvider);
     final int balance = ref.watch(balanceProvider);
 
+    List<Bolt> bolts = ref.watch(boltsProvider);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -27,21 +30,13 @@ class AdminHome extends ConsumerWidget {
             children: [
               Container(
                 height: MediaQuery.of(context).size.height / 3,
-                
                 child: ListView(
                   padding: const EdgeInsets.all(8),
-                  children: <Widget>[
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const BoltRow(row: 1),
-                        // const BoltRow(row: 2),
-                        // Column(
-                        //   children:
-                        //       exampleList.map((e) => BoltRow(row: e)).toList(),
-                        // ),
-                      ],
-                    ),
+                  children: const [
+                    BoltRows(),
+                    BoltRows(),
+
+                    // TODO Add Bolt
                   ],
                 ),
               ),
@@ -52,7 +47,8 @@ class AdminHome extends ConsumerWidget {
               Container(
                 height: MediaQuery.of(context).size.height / 10,
                 alignment: Alignment.center,
-                child: Text(value + balance.toString()),
+                child: Text(
+                    value + balance.toString() + bolts[0].isLive.toString()),
               ),
               Container(
                 height: MediaQuery.of(context).size.height / 8,

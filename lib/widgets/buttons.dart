@@ -16,7 +16,7 @@ class ButtonUp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return FloatingActionButton(
       heroTag: null,
-      onPressed: () => increment(ref.read(balanceProvider.state)),
+      onPressed: () => increment(ref.watch(balanceProvider.state)),
       tooltip: 'Increment',
       child: const Icon(Icons.add),
     );
@@ -34,48 +34,33 @@ class ButtonDown extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return FloatingActionButton(
       heroTag: null,
-      onPressed: () => decrement(
-        ref.read(balanceProvider.state),
-      ),
+      onPressed: () =>
+          decrement(ref.watch(balanceProvider.state)), // decrement2(),
       tooltip: 'Increment',
       child: const Icon(Icons.remove),
     );
   }
 }
 
-void boolFlip(bolts, row) {
-  print(bolts.state[row].isPowered);
-  bolts.state[row].isPowered = !bolts.state[row].isPowered;
-  print(bolts.state[row].isPowered);
-}
-
-class ButtonPower extends ConsumerWidget {
-  final int row;
-  const ButtonPower({Key? key, required this.row}) : super(key: key);
+class ButtonBoltPower extends ConsumerWidget {
+  final Bolt bolt;
+  const ButtonBoltPower({Key? key, required this.bolt}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    StateController<List<Bolt>> bolts = ref.watch(boltProvider.notifier);
-
-    // final List<Bolt> bolts = ref.watch(boltProvider);
-    print("bolts[row].isPowered");
-    print(bolts.state[row].isPowered);
-    // return Consumer(builder: (context, ref, _) {
     return FloatingActionButton.small(
-        heroTag: null,
-        onPressed: () => boolFlip(
-              bolts,
-              // ref.watch(boltProvider.state),
-              row,
-            ),
-
-        //=              !bolt.isPowered, // decrement(ref.watch(balanceProvider.state)),
-        tooltip: 'Switch power',
-        child: const Icon(Icons.power_settings_new_rounded),
-        // backgroundColor: ref.watch(boltProvider.state).state[row].isPowered
-
-        backgroundColor:
-            bolts.state[row].isPowered ? Colors.green : Colors.red);
-    // });
+      heroTag: null,
+      onPressed: () => ref
+          .read(boltsProvider.notifier).toggle(bolt.id),
+      tooltip: 'On/Off',
+      child: const Icon(Icons.power_settings_new_rounded),
+      backgroundColor: bolt.isLive
+          ? Color.fromARGB(255, 121, 252, 55)
+          : Color.fromARGB(255, 47, 79, 255),
+      foregroundColor: bolt.isLive
+          ? Color.fromARGB(255, 248, 158, 23)
+          : Color.fromARGB(255, 107, 107, 107),
+      elevation: bolt.isLive ? 10 : 0,
+    );
   }
 }
