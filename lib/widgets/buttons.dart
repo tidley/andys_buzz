@@ -51,7 +51,6 @@ class ButtonBoltPower extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     void toggle() {
-      //TODO see if can be used as callback
       ref.read(boltsProvider.notifier).toggle(bolt.id);
     }
 

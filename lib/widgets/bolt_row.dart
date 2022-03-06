@@ -14,9 +14,11 @@ class BoltRows extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     List<Bolt> bolts = ref.watch(boltsProvider);
     void toggle1(id) {
+      print("callback");
       //TODO see if can be used as callback
       ref.read(boltsProvider.notifier).toggle(id);
     }
+
     // row with three cells.
     // Cell 1 Title of Bolt || Cell 2 Bolt info || Cell 3 on/off
     return Column(
@@ -44,7 +46,7 @@ class BoltRows extends ConsumerWidget {
                             image: ResizeImage(
                               const NetworkImage(
                                   'https://images.prismic.io/ohme/ff49fa70-9ec4-4ce3-8495-9986cbc9ac8a_type+2+-+type+2+home+charging.png?auto=compress,format'),
-                              height: MediaQuery.of(context).size.height ~/ 10,
+                              width: MediaQuery.of(context).size.width ~/ 5,
                             ),
                           ),
                         ),
@@ -64,14 +66,15 @@ class BoltRows extends ConsumerWidget {
                         padding: const EdgeInsets.all(15),
                         child: Column(
                           children: [
-                            Text(
-                                "Location: ${bolt.location}"),
+                            Text("Location: ${bolt.location}"),
                             const Text("Other Data: "),
                           ],
                         ),
                       ),
                     ),
-                    ButtonBoltPower(bolt: bolt),
+                    ButtonBoltPower(
+                      bolt: bolt,
+                    ),
                   ],
                 ),
               ),
