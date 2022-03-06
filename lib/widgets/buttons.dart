@@ -42,8 +42,6 @@ class ButtonDown extends ConsumerWidget {
   }
 }
 
-
-
 class ButtonBoltPower extends ConsumerWidget {
   final Bolt bolt;
   const ButtonBoltPower({Key? key, required this.bolt}) : super(key: key);
@@ -60,12 +58,36 @@ class ButtonBoltPower extends ConsumerWidget {
       tooltip: 'On/Off',
       child: const Icon(Icons.power_settings_new_rounded),
       backgroundColor: bolt.isLive
-          ? Color.fromARGB(255, 121, 252, 55)
-          : Color.fromARGB(255, 47, 79, 255),
+          ? const Color.fromARGB(255, 121, 252, 55)
+          : const Color.fromARGB(255, 47, 79, 255),
       foregroundColor: bolt.isLive
-          ? Color.fromARGB(255, 255, 153, 0)
-          : Color.fromARGB(255, 107, 107, 107),
+          ? const Color.fromARGB(255, 255, 153, 0)
+          : const Color.fromARGB(255, 107, 107, 107),
       elevation: bolt.isLive ? 10 : 0,
+    );
+  }
+}
+
+class ButtonAddBolt extends ConsumerWidget {
+  const ButtonAddBolt({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    void toggle() {
+      Bolt newBolt = Bolt(
+          id: DateTime.now().second.toString(),
+          name: "Z",
+          location: "it",
+          isLive: false,
+          registered: DateTime.now());
+      ref.read(boltsProvider.notifier).addBolt(newBolt);
+    }
+
+    return FloatingActionButton(
+      heroTag: null,
+      onPressed: () => toggle(),
+      tooltip: 'On/Off',
+      child: const Icon(Icons.add),
     );
   }
 }

@@ -3,18 +3,20 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 @immutable
 class Bolt {
-  const Bolt(
-      {required this.id,
-      required this.name,
-      required this.location,
-      required this.isLive,
-      required this.registered});
+  // TODO add other params (power, uptime etc.)
 
   final String id;
   final String name;
   final String location;
   final bool isLive;
   final DateTime registered;
+
+  const Bolt(
+      {required this.id,
+      required this.name,
+      required this.location,
+      required this.isLive,
+      required this.registered});
 
   Bolt copyWith(
       {String? id,
@@ -35,18 +37,18 @@ class Bolt {
 class BoltNotifier extends StateNotifier<List<Bolt>> {
   BoltNotifier()
       : super([
-          Bolt(
-              id: "0",
-              name: "First",
-              location: "heaven",
-              isLive: false,
-              registered: DateTime.now()),
-          Bolt(
-              id: "1",
-              name: "s",
-              location: "floor",
-              isLive: true,
-              registered: DateTime.now()),         
+          // Bolt(
+          //     id: "0",
+          //     name: "First",
+          //     location: "heaven",
+          //     isLive: false,
+          //     registered: DateTime.now()),
+          // Bolt(
+          //     id: "1",
+          //     name: "s",
+          //     location: "floor",
+          //     isLive: true,
+          //     registered: DateTime.now()),
         ]);
 
   void addBolt(Bolt bolt) {
@@ -66,4 +68,6 @@ class BoltNotifier extends StateNotifier<List<Bolt>> {
         if (bolt.id == boltId) bolt.copyWith(isLive: !bolt.isLive) else bolt,
     ];
   }
+
+  // TODO add modifier for other params (power, uptime etc.)
 }

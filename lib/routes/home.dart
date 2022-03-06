@@ -1,11 +1,10 @@
-import 'package:andys_buzz/classes/classes.dart';
-import 'package:andys_buzz/widgets/bolt_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 //
 import 'package:andys_buzz/main.dart';
 import 'package:andys_buzz/widgets/widgets.dart';
+import 'package:andys_buzz/classes/classes.dart';
 
 List<int> exampleList = [0, 1, 2, 3];
 
@@ -35,7 +34,7 @@ class AdminHome extends ConsumerWidget {
                   children: const [
                     BoltRows(),
                     BoltRows(),
-
+                    BoltAdd(),
                     // TODO "Add Bolt"
                   ],
                 ),
@@ -48,7 +47,7 @@ class AdminHome extends ConsumerWidget {
                 height: MediaQuery.of(context).size.height / 10,
                 alignment: Alignment.center,
                 child: Text(
-                    value + balance.toString() + bolts[0].isLive.toString()),
+                    value + balance.toString()),
               ),
               Container(
                 height: MediaQuery.of(context).size.height / 8,

@@ -13,21 +13,13 @@ class BoltRows extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     List<Bolt> bolts = ref.watch(boltsProvider);
-    void toggle1(id) {
-      print("callback");
-      //TODO see if can be used as callback
-      ref.read(boltsProvider.notifier).toggle(id);
-    }
-
-    // row with three cells.
-    // Cell 1 Title of Bolt || Cell 2 Bolt info || Cell 3 on/off
     return Column(
       children: [
         for (final bolt in bolts)
           Row(
-            // mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
+              SizedBox(
                 width: (MediaQuery.of(context).size.width / 2.2) - 20,
                 child: Card(
                   margin: const EdgeInsets.all(5),
@@ -40,7 +32,6 @@ class BoltRows extends ConsumerWidget {
                         Text(bolt.name),
                         Container(
                           padding: EdgeInsets.all(2),
-                          // height: MediaQuery.of(context).size.height / 12,
                           child: Image(
                             fit: BoxFit.contain,
                             image: ResizeImage(
@@ -55,8 +46,8 @@ class BoltRows extends ConsumerWidget {
                   ),
                 ),
               ),
-              Container(
-                width: (MediaQuery.of(context).size.width / 1.75) - 20,
+              SizedBox(
+                width: (MediaQuery.of(context).size.width / 2.4) - 20,
                 child: Row(
                   children: [
                     Card(
@@ -72,15 +63,24 @@ class BoltRows extends ConsumerWidget {
                         ),
                       ),
                     ),
-                    ButtonBoltPower(
-                      bolt: bolt,
-                    ),
                   ],
                 ),
+              ),
+              ButtonBoltPower(
+                bolt: bolt,
               ),
             ],
           )
       ],
     );
+  }
+}
+
+class BoltAdd extends ConsumerWidget {
+  const BoltAdd({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Column(children: const [ButtonAddBolt()]);
   }
 }

@@ -4,8 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 //
 import 'package:andys_buzz/main.dart';
 
-// TODO 1 nicer layout https://www.geeksforgeeks.org/difference-between-rows-and-columns-vs-container-in-flutter/
-
 TableRow headerRow(balance) {
   return TableRow(
     children: <Widget>[
