@@ -33,7 +33,6 @@ class AdminHome extends ConsumerWidget {
                   padding: const EdgeInsets.all(8),
                   children: const [
                     BoltRows(),
-                    BoltRows(),
                     BoltAdd(),
                     // TODO "Add Bolt"
                   ],

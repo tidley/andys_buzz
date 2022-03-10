@@ -10,13 +10,15 @@ class Bolt {
   final String location;
   final bool isLive;
   final DateTime registered;
+  final String power;
 
   const Bolt(
       {required this.id,
       required this.name,
       required this.location,
       required this.isLive,
-      required this.registered});
+      required this.registered,
+      this.power = '0.0'});
 
   Bolt copyWith(
       {String? id,
