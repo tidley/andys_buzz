@@ -26,10 +26,13 @@ async function addData(newData) {
 }
 
 async function checkStatus() {
-  setInterval(() => {
-    axios.post('/state', {}).then((response) => {
-      console.log(response.data);
-      document.body.style.background = response.data == true ? 'green' : 'red';
-    });
-  }, 500);
+  // setInterval(() => {
+  axios.post('/state', {}).then((response) => {
+    console.log(response.data);
+    document.body.style.background = response.data == true ? 'green' : 'red';
+    checkStatus();
+  });
+  // }, 500);
 }
+
+// TODO https://www.npmjs.com/package/node-fetch

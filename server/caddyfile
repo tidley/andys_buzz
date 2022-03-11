@@ -1,0 +1,7 @@
+:80 localhost:80 {
+        reverse_proxy localhost:3001
+}
+
+basicauth * {
+        andy JDJhJDE0JHVyY1pGY2hJbU42bXRQU2lTTlFzZnVNNWxJTmRUNkZxWDlpMzZhTFNhcWV3U2Z1UGtRTTZh
+}
